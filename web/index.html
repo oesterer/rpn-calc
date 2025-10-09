@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RPN Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="calculator" aria-label="Reverse Polish Notation calculator">
+      <header>
+        <h1>RPN Calculator</h1>
+        <p>Type numbers and press Enter to push. Operators run immediately on keypress.</p>
+      </header>
+      <section class="display" aria-live="polite">
+        <h2 class="display__title">Stack (bottom → top)</h2>
+        <ol id="stack" class="stack"></ol>
+      </section>
+      <section class="input">
+        <label for="entry" class="sr-only">Entry</label>
+        <input id="entry" type="text" autocomplete="off" inputmode="decimal" />
+        <button type="button" id="enter-btn">Enter</button>
+        <button type="button" id="clear-entry-btn" title="Clear entry field">CE</button>
+      </section>
+      <section class="controls">
+        <div class="pad pad--numbers" aria-label="Digits">
+          <button type="button" data-append="7">7</button>
+          <button type="button" data-append="8">8</button>
+          <button type="button" data-append="9">9</button>
+          <button type="button" data-append="4">4</button>
+          <button type="button" data-append="5">5</button>
+          <button type="button" data-append="6">6</button>
+          <button type="button" data-append="1">1</button>
+          <button type="button" data-append="2">2</button>
+          <button type="button" data-append="3">3</button>
+          <button type="button" data-command="dup">dup</button>
+          <button type="button" data-append="0">0</button>
+          <button type="button" data-append=".">.</button>
+        </div>
+        <div class="pad pad--ops" aria-label="Operators">
+          <button type="button" data-command="+">+</button>
+          <button type="button" data-command="-">−</button>
+          <button type="button" data-command="*">×</button>
+          <button type="button" data-command="/">÷</button>
+          <button type="button" data-command="pow">pow</button>
+          <button type="button" data-command="inv">inv</button>
+          <button type="button" data-command="sin">sin</button>
+          <button type="button" data-command="cos">cos</button>
+          <button type="button" data-command="neg">neg</button>
+          <button type="button" data-command="swap">swap</button>
+          <button type="button" data-command="drop">drop</button>
+          <button type="button" data-command="clear">clear</button>
+        </div>
+      </section>
+      <section class="log" aria-live="polite">
+        <p id="status"></p>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>

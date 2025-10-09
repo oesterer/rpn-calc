@@ -1,0 +1,169 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #111;
+  color: #f4f4f4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.calculator {
+  background: #1e1e1e;
+  border-radius: 8px;
+  padding: 1.5rem;
+  width: min(480px, 90vw);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  display: grid;
+  grid-template-rows: auto auto auto 1fr auto;
+  gap: 1rem;
+}
+
+header h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.75rem;
+}
+
+header p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #c7c7c7;
+}
+
+.display {
+  background: #000;
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.display__title {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+  color: #9adbff;
+}
+
+.stack {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  min-height: 8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.25rem;
+}
+
+.stack li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1f2a37;
+  border-radius: 4px;
+  padding: 0.4rem 0.6rem;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.stack li.empty {
+  opacity: 0.4;
+}
+
+.stack__label {
+  color: #74d2ff;
+  margin-right: 0.5rem;
+}
+
+.input {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.input input {
+  flex: 1;
+  font-size: 1.1rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  border: 1px solid #444;
+  background: #111;
+  color: inherit;
+}
+
+.input button {
+  padding: 0 0.75rem;
+  font-size: 1rem;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem;
+}
+
+.pad {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.pad--numbers {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.pad--ops {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+button {
+  background: #29313d;
+  color: inherit;
+  border: none;
+  border-radius: 4px;
+  padding: 0.6rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+button:hover,
+button:focus {
+  background: #3a4656;
+  outline: none;
+}
+
+button:active {
+  background: #74d2ff;
+  color: #000;
+}
+
+.log {
+  min-height: 1.4rem;
+  font-size: 0.95rem;
+  color: #9adbff;
+}
+
+.log p {
+  margin: 0;
+}
+
+.status--error {
+  color: #ff8383;
+}
+
+.status--success {
+  color: #a9ff9f;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
