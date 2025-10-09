@@ -1,0 +1,30 @@
+Write a program that implements a command-line Reverse Polish Notation (RPN) calculator.
+
+Requirements:
+- The calculator should run in the terminal and accept input interactively.
+- Pressing enter pushes the input to the stack
+- Users can enter numbers and operators (`+`, `-`, `*`, `/`), the action is executed as soon as the key for the operator is pressed
+- Maintain a stack for operands.
+- On each operator, apply it to the last two numbers on the stack and push the result back.
+- Always display the last 5 positions in the stack and refresh after each execution
+- Support commands:
+  - `q` or `quit` to exit
+  - `clear` to reset the stack
+  - `swap` swap last two items on the stack
+  - `drop` remove last item from the stack
+  - `dup` duplicate the last item on the stack
+  - other math commands: sin, cos, inv (invert), pow (power of, second last item to the power of the last item on the stack)
+- Handle invalid input gracefully (e.g., too few operands, invalid tokens).
+- Print the result after each valid operation.
+- The program should keep running until the user quits.
+
+Make sure the code is well-structured, with functions for parsing input, performing operations, and running the REPL loop.
+
+
+
+change the order of the stack, newest at the bottom
+
+  if a stack element is empty, just use an empty string intead of "[empty]"
+
+  when the user presses + (or any other operand) execute it immediately, do not require the user to press
+  enter
