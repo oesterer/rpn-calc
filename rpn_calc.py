@@ -266,13 +266,23 @@ def repl() -> None:
                     sys.stdout.flush()
                 continue
 
-            if ch in "+-*/" and not buffer:
+            if ch in "+-*/":
+                sys.stdout.write("\n")
+                sys.stdout.flush()
+
+                if buffer:
+                    running = process_token(calc, buffer)
+                    buffer = ""
+                    if not running:
+                        break
+
                 sys.stdout.write(ch + "\n")
                 sys.stdout.flush()
                 running = process_token(calc, ch)
-                if running:
-                    buffer = ""
-                    show_prompt()
+                if not running:
+                    break
+                buffer = ""
+                show_prompt()
                 continue
 
             if ch in ("\n", "\r"):

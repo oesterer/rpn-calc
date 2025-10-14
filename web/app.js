@@ -217,9 +217,10 @@ function processToken(raw) {
   const token = raw.trim();
   if (token.length === 0) {
     renderStack();
-    return;
+    return true;
   }
 
+  let success = true;
   const number = Number(token);
   try {
     if (!Number.isNaN(number)) {
@@ -231,15 +232,29 @@ function processToken(raw) {
     }
   } catch (err) {
     setStatus(err.message, 'error');
+    success = false;
   }
 
   renderStack();
+  return success;
+}
+
+function processPendingEntry() {
+  const value = entryEl.value;
+  if (value.trim().length === 0) {
+    return true;
+  }
+  const success = processToken(value);
+  if (success) {
+    entryEl.value = '';
+  }
+  return success;
 }
 
 function submitEntry() {
-  const value = entryEl.value;
-  processToken(value);
-  entryEl.value = '';
+  const success = processPendingEntry();
+  entryEl.focus();
+  return success;
 }
 
 function clearEntry() {
@@ -248,7 +263,6 @@ function clearEntry() {
 
 enterBtn.addEventListener('click', () => {
   submitEntry();
-  entryEl.focus();
 });
 
 clearEntryBtn.addEventListener('click', () => {
@@ -266,7 +280,10 @@ document.querySelectorAll('[data-append]').forEach((button) => {
 
 document.querySelectorAll('[data-command]').forEach((button) => {
   button.addEventListener('click', () => {
-    processToken(button.dataset.command);
+    const ok = processPendingEntry();
+    if (ok) {
+      processToken(button.dataset.command);
+    }
     entryEl.focus();
   });
 });
@@ -278,30 +295,33 @@ entryEl.addEventListener('keydown', (event) => {
   } else if (event.key === 'Escape') {
     clearEntry();
     setStatus('Entry cleared');
+  } else if (['+', '-', '*', '/'].includes(event.key)) {
+    event.preventDefault();
+    const ok = processPendingEntry();
+    if (ok) {
+      processToken(event.key);
+    }
   }
 });
 
 document.addEventListener('keydown', (event) => {
   const { key, target } = event;
   if (target === entryEl) {
-    if (['+', '-', '*', '/'].includes(key) && entryEl.value === '') {
-      event.preventDefault();
-      processToken(key);
-      return;
-    }
     return;
   }
 
   if (key === 'Enter') {
     event.preventDefault();
     submitEntry();
-    entryEl.focus();
     return;
   }
 
-  if (['+', '-', '*', '/'].includes(key) && entryEl.value === '') {
+  if (['+', '-', '*', '/'].includes(key)) {
     event.preventDefault();
-    processToken(key);
+    const ok = processPendingEntry();
+    if (ok) {
+      processToken(key);
+    }
     entryEl.focus();
     return;
   }
