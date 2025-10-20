@@ -1,0 +1,33 @@
+{
+  "": {
+    "swift-dependencies": "/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/debug/RPNCalcApp.build/master.swiftdeps"
+  },
+  "/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/Sources/RPNCalcApp/ContentView.swift": {
+    "dependencies": "/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/debug/RPNCalcApp.build/ContentView.d",
+    "object": "/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/debug/RPNCalcApp.build/ContentView.swift.o",
+    "swiftmodule": "/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/debug/RPNCalcApp.build/ContentView~partial.swiftmodule",
+    "swift-dependencies": "/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/debug/RPNCalcApp.build/ContentView.swiftdeps",
+    "diagnostics": "/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/debug/RPNCalcApp.build/ContentView.dia"
+  },
+  "/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/Sources/RPNCalcApp/KeyCaptureView.swift": {
+    "dependencies": "/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/debug/RPNCalcApp.build/KeyCaptureView.d",
+    "object": "/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/debug/RPNCalcApp.build/KeyCaptureView.swift.o",
+    "swiftmodule": "/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/debug/RPNCalcApp.build/KeyCaptureView~partial.swiftmodule",
+    "swift-dependencies": "/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/debug/RPNCalcApp.build/KeyCaptureView.swiftdeps",
+    "diagnostics": "/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/debug/RPNCalcApp.build/KeyCaptureView.dia"
+  },
+  "/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/Sources/RPNCalcApp/RPNCalculator.swift": {
+    "dependencies": "/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/debug/RPNCalcApp.build/RPNCalculator.d",
+    "object": "/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/debug/RPNCalcApp.build/RPNCalculator.swift.o",
+    "swiftmodule": "/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/debug/RPNCalcApp.build/RPNCalculator~partial.swiftmodule",
+    "swift-dependencies": "/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/debug/RPNCalcApp.build/RPNCalculator.swiftdeps",
+    "diagnostics": "/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/debug/RPNCalcApp.build/RPNCalculator.dia"
+  },
+  "/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/Sources/RPNCalcApp/main.swift": {
+    "dependencies": "/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/debug/RPNCalcApp.build/main.d",
+    "object": "/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/debug/RPNCalcApp.build/main.swift.o",
+    "swiftmodule": "/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/debug/RPNCalcApp.build/main~partial.swiftmodule",
+    "swift-dependencies": "/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/debug/RPNCalcApp.build/main.swiftdeps",
+    "diagnostics": "/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/debug/RPNCalcApp.build/main.dia"
+  }
+}

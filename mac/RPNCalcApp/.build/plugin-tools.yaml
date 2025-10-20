@@ -1,0 +1,66 @@
+client:
+  name: basic
+  file-system: device-agnostic
+tools: {}
+targets:
+  "PackageStructure": ["<PackageStructure>"]
+  "RPNCalcApp-x86_64-apple-macosx15.0-release.exe": ["<RPNCalcApp-x86_64-apple-macosx15.0-release.exe>"]
+  "RPNCalcApp-x86_64-apple-macosx15.0-release.module": ["<RPNCalcApp-x86_64-apple-macosx15.0-release.module>"]
+  "main": ["<RPNCalcApp-x86_64-apple-macosx15.0-release.exe>","<RPNCalcApp-x86_64-apple-macosx15.0-release.module>"]
+  "test": ["<RPNCalcApp-x86_64-apple-macosx15.0-release.exe>","<RPNCalcApp-x86_64-apple-macosx15.0-release.module>"]
+default: "main"
+nodes:
+  "/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/Sources/RPNCalcApp/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+commands:
+  "/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/release/RPNCalcApp.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/Sources/RPNCalcApp/ContentView.swift","/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/Sources/RPNCalcApp/KeyCaptureView.swift","/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/Sources/RPNCalcApp/RPNCalculator.swift","/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/Sources/RPNCalcApp/main.swift"]
+    outputs: ["/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/release/RPNCalcApp.build/sources"]
+    description: "Write auxiliary file /Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/release/RPNCalcApp.build/sources"
+
+  "/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/release/RPNCalcApp.product/Objects.LinkFileList":
+    tool: write-auxiliary-file
+    inputs: ["<link-file-list>","/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/release/RPNCalcApp.build/ContentView.swift.o","/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/release/RPNCalcApp.build/KeyCaptureView.swift.o","/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/release/RPNCalcApp.build/RPNCalculator.swift.o","/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/release/RPNCalcApp.build/main.swift.o"]
+    outputs: ["/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/release/RPNCalcApp.product/Objects.LinkFileList"]
+    description: "Write auxiliary file /Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/release/RPNCalcApp.product/Objects.LinkFileList"
+
+  "/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/release/swift-version--1AB21518FC5DEDBE.txt":
+    tool: write-auxiliary-file
+    inputs: ["<swift-get-version>","/Library/Developer/CommandLineTools/usr/bin/swiftc"]
+    outputs: ["/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/release/swift-version--1AB21518FC5DEDBE.txt"]
+    always-out-of-date: "true"
+    description: "Write auxiliary file /Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/release/swift-version--1AB21518FC5DEDBE.txt"
+
+  "<RPNCalcApp-x86_64-apple-macosx15.0-release.exe>":
+    tool: phony
+    inputs: ["/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/release/RPNCalcApp"]
+    outputs: ["<RPNCalcApp-x86_64-apple-macosx15.0-release.exe>"]
+
+  "<RPNCalcApp-x86_64-apple-macosx15.0-release.module>":
+    tool: phony
+    inputs: ["/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/release/RPNCalcApp.build/ContentView.swift.o","/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/release/RPNCalcApp.build/KeyCaptureView.swift.o","/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/release/RPNCalcApp.build/RPNCalculator.swift.o","/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/release/RPNCalcApp.build/main.swift.o","/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/release/Modules/RPNCalcApp.swiftmodule"]
+    outputs: ["<RPNCalcApp-x86_64-apple-macosx15.0-release.module>"]
+
+  "C.RPNCalcApp-x86_64-apple-macosx15.0-release.exe":
+    tool: shell
+    inputs: ["/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/release/RPNCalcApp.build/ContentView.swift.o","/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/release/RPNCalcApp.build/KeyCaptureView.swift.o","/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/release/RPNCalcApp.build/RPNCalculator.swift.o","/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/release/RPNCalcApp.build/main.swift.o","/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/release/RPNCalcApp.product/Objects.LinkFileList"]
+    outputs: ["/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/release/RPNCalcApp"]
+    description: "Linking ./.build/x86_64-apple-macosx/release/RPNCalcApp"
+    args: ["/Library/Developer/CommandLineTools/usr/bin/swiftc","-L","/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/release","-o","/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/release/RPNCalcApp","-module-name","RPNCalcApp","-Xlinker","-no_warn_duplicate_libraries","-emit-executable","-Xlinker","-dead_strip","-Xlinker","-alias","-Xlinker","_RPNCalcApp_main","-Xlinker","_main","-Xlinker","-rpath","-Xlinker","@loader_path","@/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/release/RPNCalcApp.product/Objects.LinkFileList","-target","x86_64-apple-macosx12.0","-I","/Library/Developer/CommandLineTools/Library/Developer/Frameworks","-L","/Library/Developer/CommandLineTools/Library/Developer/Frameworks","-plugin-path","/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing","-sdk","/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk","-g"]
+
+  "C.RPNCalcApp-x86_64-apple-macosx15.0-release.module":
+    tool: shell
+    inputs: ["/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/Sources/RPNCalcApp/ContentView.swift","/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/Sources/RPNCalcApp/KeyCaptureView.swift","/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/Sources/RPNCalcApp/RPNCalculator.swift","/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/Sources/RPNCalcApp/main.swift","/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/release/swift-version--1AB21518FC5DEDBE.txt","/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/release/RPNCalcApp.build/sources"]
+    outputs: ["/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/release/RPNCalcApp.build/ContentView.swift.o","/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/release/RPNCalcApp.build/KeyCaptureView.swift.o","/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/release/RPNCalcApp.build/RPNCalculator.swift.o","/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/release/RPNCalcApp.build/main.swift.o","/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/release/Modules/RPNCalcApp.swiftmodule"]
+    description: "Compiling Swift Module 'RPNCalcApp' (4 sources)"
+    args: ["/Library/Developer/CommandLineTools/usr/bin/swiftc","-module-name","RPNCalcApp","-emit-dependencies","-emit-module","-emit-module-path","/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/release/Modules/RPNCalcApp.swiftmodule","-output-file-map","/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/release/RPNCalcApp.build/output-file-map.json","-whole-module-optimization","-num-threads","16","-c","@/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/release/RPNCalcApp.build/sources","-I","/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/release/Modules","-target","x86_64-apple-macosx12.0","-whole-module-optimization","-num-threads","16","-serialize-diagnostics","-O","-j16","-DSWIFT_PACKAGE","-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE","-module-cache-path","/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/.build/x86_64-apple-macosx/release/ModuleCache","-parseable-output","-Xfrontend","-entry-point-function-name","-Xfrontend","RPNCalcApp_main","-color-diagnostics","-swift-version","5","-parse-as-library","-I","/Library/Developer/CommandLineTools/Library/Developer/Frameworks","-L","/Library/Developer/CommandLineTools/Library/Developer/Frameworks","-plugin-path","/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing","-sdk","/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk","-g","-Xcc","-isysroot","-Xcc","/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk","-Xcc","-fPIC","-Xcc","-g"]
+
+  "PackageStructure":
+    tool: package-structure-tool
+    inputs: ["/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/Sources/RPNCalcApp/","/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/Package.swift","/Users/aoesterer/Code/rpn-calc/mac/RPNCalcApp/Package.resolved"]
+    outputs: ["<PackageStructure>"]
+    description: "Planning build"
+    allow-missing-inputs: true
+
