@@ -1,1 +1,4 @@
 resume
+# Build artifacts
+mac/RPNCalcApp/.build/
+mac/RPNCalcApp/.swiftpm/
