@@ -113,7 +113,7 @@ header p {
 }
 
 .pad--ops {
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 }
 
 button {

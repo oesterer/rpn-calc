@@ -109,6 +109,46 @@ class RPNCalculator {
   negate() {
     return this.unaryOp((v) => -v, 'neg');
   }
+
+  sqrt() {
+    return this.unaryOp((v) => {
+      if (v < 0) {
+        throw new Error('cannot take square root of negative value');
+      }
+      return Math.sqrt(v);
+    }, 'sqrt');
+  }
+
+  log10() {
+    return this.unaryOp((v) => {
+      if (v <= 0) {
+        throw new Error('log undefined for non-positive values');
+      }
+      return Math.log10(v);
+    }, 'log');
+  }
+
+  ln() {
+    return this.unaryOp((v) => {
+      if (v <= 0) {
+        throw new Error('ln undefined for non-positive values');
+      }
+      return Math.log(v);
+    }, 'ln');
+  }
+
+  tangent() {
+    return this.unaryOp((v) => Math.tan(v), 'tan');
+  }
+
+  square() {
+    return this.unaryOp((v) => v * v, 'sq');
+  }
+
+  pushConstant(value) {
+    this.push(value);
+    return value;
+  }
 }
 
 const calc = new RPNCalculator();
@@ -173,14 +213,19 @@ function handleCommand(token) {
     '/': () => calc.divide(),
     sin: () => calc.sine(),
     cos: () => calc.cosine(),
+    tan: () => calc.tangent(),
     inv: () => calc.invert(),
     pow: () => calc.power(),
     neg: () => calc.negate(),
+    sqrt: () => calc.sqrt(),
+    log: () => calc.log10(),
+    ln: () => calc.ln(),
+    sq: () => calc.square(),
   };
 
   const lower = token.toLowerCase();
 
-  if (lower === 'clear') {
+  if (lower === 'clear' || lower === 'clr') {
     calc.clear();
     return 'Stack cleared';
   }
@@ -199,6 +244,16 @@ function handleCommand(token) {
     const value = calc.peek();
     calc.dup();
     return `Duplicated ${formatValue(value)}`;
+  }
+
+  if (lower === 'pi') {
+    const value = calc.pushConstant(Math.PI);
+    return `Pushed π (${formatValue(value)})`;
+  }
+
+  if (lower === 'e') {
+    const value = calc.pushConstant(Math.E);
+    return `Pushed e (${formatValue(value)})`;
   }
 
   if (lower === 'q' || lower === 'quit') {

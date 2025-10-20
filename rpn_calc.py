@@ -101,6 +101,44 @@ class RPNCalculator:
     def negate(self) -> float:
         return self.unary_op(lambda value: -value, "neg")
 
+    def sqrt(self) -> float:
+        def safe_sqrt(value: float) -> float:
+            if value < 0:
+                raise ValueError("cannot take square root of negative value")
+            return math.sqrt(value)
+
+        return self.unary_op(safe_sqrt, "sqrt")
+
+    def log10(self) -> float:
+        def safe_log(value: float) -> float:
+            if value <= 0:
+                raise ValueError("log undefined for non-positive values")
+            return math.log10(value)
+
+        return self.unary_op(safe_log, "log")
+
+    def ln(self) -> float:
+        def safe_ln(value: float) -> float:
+            if value <= 0:
+                raise ValueError("ln undefined for non-positive values")
+            return math.log(value)
+
+        return self.unary_op(safe_ln, "ln")
+
+    def tangent(self) -> float:
+        return self.unary_op(math.tan, "tan")
+
+    def square(self) -> float:
+        return self.unary_op(lambda value: value * value, "sq")
+
+    def push_pi(self) -> float:
+        self.push(math.pi)
+        return math.pi
+
+    def push_e(self) -> float:
+        self.push(math.e)
+        return math.e
+
 
 def format_value(value: float) -> str:
     if math.isfinite(value) and float(value).is_integer():
@@ -127,6 +165,17 @@ def parse_number(token: str) -> float | None:
         return None
 
 
+HELP_TEXT = (
+    "Available commands:\n"
+    "  Arithmetic: +, -, *, /, pow, sq\n"
+    "  Transcendental: sin, cos, tan, inv, sqrt, log, ln\n"
+    "  Stack ops: dup, swap, drop, clear/clr\n"
+    "  Constants: pi, e\n"
+    "  Other: neg, help, quit/q\n"
+    "Type numbers and press Enter to push them onto the stack."
+)
+
+
 def handle_command(calc: RPNCalculator, token: str) -> tuple[bool, str | None]:
     commands: Dict[str, Callable[[], float]] = {
         "+": calc.add,
@@ -135,9 +184,19 @@ def handle_command(calc: RPNCalculator, token: str) -> tuple[bool, str | None]:
         "/": calc.divide,
         "sin": calc.sine,
         "cos": calc.cosine,
+        "tan": calc.tangent,
         "inv": calc.invert,
         "pow": calc.power,
         "neg": calc.negate,
+        "sqrt": calc.sqrt,
+        "log": calc.log10,
+        "ln": calc.ln,
+        "sq": calc.square,
+    }
+
+    constants: Dict[str, Callable[[], float]] = {
+        "pi": calc.push_pi,
+        "e": calc.push_e,
     }
 
     lower = token.lower()
@@ -145,9 +204,13 @@ def handle_command(calc: RPNCalculator, token: str) -> tuple[bool, str | None]:
     if lower in ("q", "quit"):
         return False, None
 
-    if lower == "clear":
+    if lower in {"clear", "clr"}:
         calc.clear()
         return True, "Stack cleared"
+
+    if lower == "help":
+        print(HELP_TEXT)
+        return True, None
 
     if lower == "swap":
         calc.swap()
@@ -161,6 +224,12 @@ def handle_command(calc: RPNCalculator, token: str) -> tuple[bool, str | None]:
         value = calc.peek()
         calc.dup()
         return True, f"Duplicated {format_value(value)}"
+
+    if lower in constants:
+        value = constants[lower]()
+        name = "π" if lower == "pi" else ("e" if lower == "e" else lower)
+        formatted = format_value(value)
+        return True, f"Pushed {name} ({formatted})"
 
     if lower in commands:
         result = commands[lower]()
@@ -204,7 +273,9 @@ def repl() -> None:
         "RPN calculator ready. Numbers require Enter; operators (+, -, *, /) execute immediately."
     )
     print(intro)
-    print("Commands: sin, cos, inv, pow, neg, swap, drop, dup, clear, quit.")
+    print(
+        "Commands: sin, cos, tan, inv, pow, sqrt, log, ln, sq, neg, swap, drop, dup, clear/clr, pi, e, quit."
+    )
 
     if not sys.stdin.isatty() or not sys.stdout.isatty():
         while True:
