@@ -26,6 +26,7 @@ rpn-calc/
 ├─ index.html                # Browser UI entry point
 ├─ style.css                 # Browser styles
 ├─ app.js                    # Browser logic
+├─ favicon.png               # Browser tab icon
 ├─ mac/
 │  └─ RPNCalcApp/           # SwiftUI macOS app (Swift Package Manager project)
 ├─ mobile/                       # Expo iOS app (TypeScript/React Native)
