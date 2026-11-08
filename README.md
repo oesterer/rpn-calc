@@ -3,7 +3,7 @@
 This repository contains a set of Reverse Polish Notation (RPN) calculators that share the same command vocabulary across multiple user interfaces:
 
 - **Terminal CLI** (`rpn_calc.py`) – an interactive shell app that supports immediate operator keys and stack manipulation commands.
-- **Web UI** (`web/`) – a browser-based calculator with buttons and keyboard shortcuts, styled for desktop use.
+- **Web UI** (repository root) – a browser-based calculator with buttons and keyboard shortcuts, styled for desktop use.
 - **macOS App** (`mac/RPNCalcApp/`) – a SwiftUI application packaged as a native `.app`, featuring keyboard capture and a help sheet.
 - **iOS App** (`mobile/`) – an Expo/React Native application with a touch-first keypad, scientific panel, dark mode, help sheet, and EAS build profiles.
 
@@ -23,10 +23,9 @@ All implementations operate on a shared feature set:
 rpn-calc/
 ├─ README.md                # Project overview (this file)
 ├─ rpn_calc.py              # Terminal calculator
-├─ web/
-│  ├─ index.html            # Browser UI entry point
-│  ├─ style.css             # Browser styles
-│  └─ app.js                # Browser logic
+├─ index.html                # Browser UI entry point
+├─ style.css                 # Browser styles
+├─ app.js                    # Browser logic
 ├─ mac/
 │  └─ RPNCalcApp/           # SwiftUI macOS app (Swift Package Manager project)
 ├─ mobile/                       # Expo iOS app (TypeScript/React Native)
@@ -58,7 +57,7 @@ python3 rpn_calc.py
 Any static file server works. For example:
 
 ```bash
-python3 -m http.server --directory web
+python3 -m http.server
 ```
 
 Then navigate to <http://localhost:8000> and interact via keyboard or mouse.
